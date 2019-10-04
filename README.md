@@ -34,6 +34,43 @@ const routes: Routes = [
 ];
 ```
 notice product works load on top-level
-## create new file app/product.ts
+
+## update product-list page to display data from products.ts, and add share button
+### product-list.component.html
+```
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+
+    <h3>
+      <a [title]="product.name + ' details'">
+        {{ product.name }}
+      </a>
+    </h3>
+  
+    <p *ngIf="product.description">
+      Description: {{ product.description }}
+    </p>
+
+        <button (click)="share()">
+            Share
+        </button>
+  
+  </div>
+  ```
+
+## create new file app/products.ts
 add json
+
+## update product-list.components.ts
+```
+import { products } from '../products';
+
+export class ProductListComponent implements OnInit {
+  products = products;
+
+  share() {
+    window.alert('The product has been shared!');
+  }
+```
 
